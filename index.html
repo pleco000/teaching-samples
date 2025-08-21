@@ -5,58 +5,93 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>教学截图（互动课堂样例）</title>
 <style>
+  :root { --maxw: 1100px; }
+  * { box-sizing: border-box; }
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; margin: 0; background: #fafafa; color: #222; }
   header { padding: 28px 20px; background: #ffffff; border-bottom: 1px solid #eee; }
   header h1 { margin: 0 0 6px; font-weight: 600; font-size: 22px; }
   header p { margin: 0; color: #666; font-size: 14px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; padding: 18px; max-width: 1100px; margin: 0 auto; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 18px; padding: 18px; max-width: var(--maxw); margin: 0 auto; }
   .card { background: #fff; border: 1px solid #eee; border-radius: 14px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-  .card img { width: 100%; height: auto; display: block; }
+  .thumb { position: relative; }
+  .thumb img { width: 100%; height: auto; display: block; cursor: zoom-in; transition: transform .2s ease; }
+  .thumb img:hover { transform: scale(1.01); }
   .cap { padding: 10px 12px; font-size: 14px; line-height: 1.5; color: #333; }
   footer { text-align: center; color: #888; font-size: 12px; padding: 20px 10px 30px; }
-  a { color: #0b73e0; text-decoration: none; }
-  a:hover { text-decoration: underline; }
+  .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.8); display: none; align-items: center; justify-content: center; z-index: 9999; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 92vw; max-height: 92vh; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.4); }
+  .lightbox .close { position: fixed; top: 12px; right: 16px; font-size: 28px; color: #fff; cursor: pointer; line-height: 1; }
+  .lightbox .caption { position: fixed; bottom: 16px; left: 0; right: 0; text-align: center; color: #eee; font-size: 14px; padding: 6px 12px; }
 </style>
 </head>
 <body>
 <header>
   <h1>教学截图（互动课堂样例）</h1>
-  <p>授课工具示例：Wordwall / Flippity / ToyTheater / 多媒体。更新日期：2025-08-21</p>
+  <p>授课工具示例：Wordwall / Flippity / ToyTheater / 多媒体</p>
 </header>
 <section class="grid">
   <article class="card">
-    <img src="img_01.jpg" alt="Wordwall 配对练习：场所词汇（办公楼、学生、饭店、图书馆）— 识字与词义匹配">
+    <div class="thumb"><img src="img_01.jpg" alt="Wordwall 配对练习：场所词汇（办公楼、学生、饭店、图书馆）— 识字与词义匹配" data-cap="Wordwall 配对练习：场所词汇（办公楼、学生、饭店、图书馆）— 识字与词义匹配"></div>
     <div class="cap">Wordwall 配对练习：场所词汇（办公楼、学生、饭店、图书馆）— 识字与词义匹配</div>
   </article>
   <article class="card">
-    <img src="img_02.jpg" alt="文化拓展：十二生肖与基础词汇（课堂互动讲解截图）">
+    <div class="thumb"><img src="img_02.jpg" alt="文化拓展：十二生肖与基础词汇（课堂互动讲解截图）" data-cap="文化拓展：十二生肖与基础词汇（课堂互动讲解截图）"></div>
     <div class="cap">文化拓展：十二生肖与基础词汇（课堂互动讲解截图）</div>
   </article>
   <article class="card">
-    <img src="img_03.jpg" alt="ToyTheater 交互时钟：时间表达（半点、整点与 AM/PM）">
+    <div class="thumb"><img src="img_03.jpg" alt="ToyTheater 交互时钟：时间表达（半点、整点与 AM/PM）" data-cap="ToyTheater 交互时钟：时间表达（半点、整点与 AM/PM）"></div>
     <div class="cap">ToyTheater 交互时钟：时间表达（半点、整点与 AM/PM）</div>
   </article>
   <article class="card">
-    <img src="img_04.jpg" alt="Wordwall 识字测验：动物相关字词（例：水、鸟、米、九）">
+    <div class="thumb"><img src="img_04.jpg" alt="Wordwall 识字测验：动物相关字词（例：水、鸟、米、九）" data-cap="Wordwall 识字测验：动物相关字词（例：水、鸟、米、九）"></div>
     <div class="cap">Wordwall 识字测验：动物相关字词（例：水、鸟、米、九）</div>
   </article>
   <article class="card">
-    <img src="img_05.jpg" alt="Flippity Randomizer：日期与星期主题随机问答（例：星期六/星期天）">
+    <div class="thumb"><img src="img_05.jpg" alt="Flippity Randomizer：日期与星期主题随机问答（例：星期六/星期天）" data-cap="Flippity Randomizer：日期与星期主题随机问答（例：星期六/星期天）"></div>
     <div class="cap">Flippity Randomizer：日期与星期主题随机问答（例：星期六/星期天）</div>
   </article>
   <article class="card">
-    <img src="img_06.jpg" alt="Flippity Board Game：城市设施主题闯关（例：商店、餐馆、银行等）">
+    <div class="thumb"><img src="img_06.jpg" alt="Flippity Board Game：城市设施主题闯关（例：商店、餐馆、银行等）" data-cap="Flippity Board Game：城市设施主题闯关（例：商店、餐馆、银行等）"></div>
     <div class="cap">Flippity Board Game：城市设施主题闯关（例：商店、餐馆、银行等）</div>
   </article>
   <article class="card">
-    <img src="img_07.jpg" alt="课堂板书演算：用中文进行加减法口算与书写训练">
+    <div class="thumb"><img src="img_07.jpg" alt="课堂板书演算：用中文进行加减法口算与书写训练" data-cap="课堂板书演算：用中文进行加减法口算与书写训练"></div>
     <div class="cap">课堂板书演算：用中文进行加减法口算与书写训练</div>
   </article>
   <article class="card">
-    <img src="img_08.jpg" alt="多媒体输入：少儿动画片段引导听说（情景对话与描述）">
+    <div class="thumb"><img src="img_08.jpg" alt="多媒体输入：少儿动画片段引导听说（情景对话与描述）" data-cap="多媒体输入：少儿动画片段引导听说（情景对话与描述）"></div>
     <div class="cap">多媒体输入：少儿动画片段引导听说（情景对话与描述）</div>
   </article>
 </section>
-<footer>所有截图仅展示教学界面，不含学生隐私。© Teaching Samples</footer>
+<div class="lightbox" id="lb">
+  <img id="lbimg" alt="preview">
+  <div class="close" id="lbclose">×</div>
+  <div class="caption" id="lbcap"></div>
+</div>
+<footer>所有截图仅展示教学界面，不含学生隐私。</footer>
+<script>
+  const lb = document.getElementById('lb');
+  const lbimg = document.getElementById('lbimg');
+  const lbcap = document.getElementById('lbcap');
+  const closeBtn = document.getElementById('lbclose');
+
+  document.querySelectorAll('.thumb img').forEach(img => {
+    img.addEventListener('click', () => {
+      lbimg.src = img.src;
+      lbimg.alt = img.alt;
+      lbcap.textContent = img.dataset.cap || img.alt || '';
+      lb.classList.add('open');
+    });
+  });
+
+  function closeLb() {
+    lb.classList.remove('open');
+    lbimg.src = '';
+  }
+  lb.addEventListener('click', (e) => { if (e.target === lb) closeLb(); });
+  closeBtn.addEventListener('click', closeLb);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLb(); });
+</script>
 </body>
 </html>
